@@ -34,8 +34,8 @@
 
     td.name {
       white-space: normal;
-      word-break: keep-all;        /* prevents mid-word breaking */
-      overflow-wrap: break-word;   /* break at full-word boundaries */
+      word-break: keep-all;
+      overflow-wrap: break-word;
       line-height: 1.3;
       font-size: 16px;
     }
@@ -45,10 +45,14 @@
       font-size: 18px;
     }
 
-    tr.vikings   { background-color: #1e1e1e; color: #ff4d4d; }
-    tr.wildcats  { background-color: #1f1f3f; color: orange; }
-    tr.colts     { background-color: #200000; color: violet; }
-    tr.panthers  { background-color: #002020; color: cyan; }
+    tr.team1 { background-color: #1e1e1e; color: #ff4d4d; }
+    tr.team2 { background-color: #1f1f3f; color: orange; }
+    tr.team3 { background-color: #200000; color: violet; }
+    tr.team4 { background-color: #002020; color: cyan; }
+    tr.team5 { background-color: #2f1f1f; color: lime; }
+    tr.team6 { background-color: #1f2f1f; color: gold; }
+    tr.team7 { background-color: #1f1f2f; color: deeppink; }
+    tr.team8 { background-color: #101010; color: #00ffff; }
   </style>
 </head>
 <body>
@@ -67,8 +71,8 @@
         </tr>
       </thead>
       <tbody id="score-table">
-        <tr class="vikings">
-          <td id="name1" class="name">Vikings</td>
+        <tr class="team1">
+          <td id="name1" class="name">Team 1</td>
           <td id="score1">0</td>
           <td id="game1_1"></td>
           <td id="game1_2"></td>
@@ -77,8 +81,8 @@
           <td id="game1_5"></td>
           <td id="game1_6"></td>
         </tr>
-        <tr class="wildcats">
-          <td id="name2" class="name">Wildcats</td>
+        <tr class="team2">
+          <td id="name2" class="name">Team 2</td>
           <td id="score2">0</td>
           <td id="game2_1"></td>
           <td id="game2_2"></td>
@@ -87,8 +91,8 @@
           <td id="game2_5"></td>
           <td id="game2_6"></td>
         </tr>
-        <tr class="colts">
-          <td id="name3" class="name">Colts</td>
+        <tr class="team3">
+          <td id="name3" class="name">Team 3</td>
           <td id="score3">0</td>
           <td id="game3_1"></td>
           <td id="game3_2"></td>
@@ -97,8 +101,8 @@
           <td id="game3_5"></td>
           <td id="game3_6"></td>
         </tr>
-        <tr class="panthers">
-          <td id="name4" class="name">Panthers</td>
+        <tr class="team4">
+          <td id="name4" class="name">Team 4</td>
           <td id="score4">0</td>
           <td id="game4_1"></td>
           <td id="game4_2"></td>
@@ -106,6 +110,46 @@
           <td id="game4_4"></td>
           <td id="game4_5"></td>
           <td id="game4_6"></td>
+        </tr>
+        <tr class="team5">
+          <td id="name5" class="name">Team 5</td>
+          <td id="score5">0</td>
+          <td id="game5_1"></td>
+          <td id="game5_2"></td>
+          <td id="game5_3"></td>
+          <td id="game5_4"></td>
+          <td id="game5_5"></td>
+          <td id="game5_6"></td>
+        </tr>
+        <tr class="team6">
+          <td id="name6" class="name">Team 6</td>
+          <td id="score6">0</td>
+          <td id="game6_1"></td>
+          <td id="game6_2"></td>
+          <td id="game6_3"></td>
+          <td id="game6_4"></td>
+          <td id="game6_5"></td>
+          <td id="game6_6"></td>
+        </tr>
+        <tr class="team7">
+          <td id="name7" class="name">Team 7</td>
+          <td id="score7">0</td>
+          <td id="game7_1"></td>
+          <td id="game7_2"></td>
+          <td id="game7_3"></td>
+          <td id="game7_4"></td>
+          <td id="game7_5"></td>
+          <td id="game7_6"></td>
+        </tr>
+        <tr class="team8">
+          <td id="name8" class="name">Team 8</td>
+          <td id="score8">0</td>
+          <td id="game8_1"></td>
+          <td id="game8_2"></td>
+          <td id="game8_3"></td>
+          <td id="game8_4"></td>
+          <td id="game8_5"></td>
+          <td id="game8_6"></td>
         </tr>
       </tbody>
     </table>
@@ -125,7 +169,7 @@
 
           rows.forEach((row, i) => {
             const rawName = row.c[0]?.v || '';
-            const name = rawName.replace(/\s+/g, '<br>'); // break each word onto new line
+            const name = rawName.replace(/\s+/g, '<br>'); // line break for each word
             const score = row.c[1]?.v ?? '';
 
             const nameEl = document.getElementById(`name${i + 1}`);
