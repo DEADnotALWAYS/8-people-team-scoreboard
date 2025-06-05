@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Freeloaders scoreboard</title>
-  <!-- Fira Code font -->
+  <title>Freeloaders Scoreboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     body {
@@ -35,8 +34,9 @@
 
     td.name {
       white-space: normal;
-      line-height: 1.2;
-      padding: 6px 10px;
+      word-break: keep-all;        /* prevents mid-word breaking */
+      overflow-wrap: break-word;   /* break at full-word boundaries */
+      line-height: 1.3;
       font-size: 16px;
     }
 
@@ -45,14 +45,10 @@
       font-size: 18px;
     }
 
-    tr.vikings { background-color: #1e1e1e; color: #ff4d4d; }
-    tr.wildcats { background-color: #1f1f3f; color: orange; }
-    tr.colts { background-color: #200000; color: violet; }
-    tr.panthers { background-color: #002020; color: cyan; }
-    tr.lions { background-color: #1a1a2e; color: gold; }
-    tr.sharks { background-color: #001f3f; color: #00ffff; }
-    tr.dragons { background-color: #330000; color: #ff66cc; }
-    tr.titans { background-color: #0f0f0f; color: #66ff66; }
+    tr.vikings   { background-color: #1e1e1e; color: #ff4d4d; }
+    tr.wildcats  { background-color: #1f1f3f; color: orange; }
+    tr.colts     { background-color: #200000; color: violet; }
+    tr.panthers  { background-color: #002020; color: cyan; }
   </style>
 </head>
 <body>
@@ -111,46 +107,6 @@
           <td id="game4_5"></td>
           <td id="game4_6"></td>
         </tr>
-        <tr class="lions">
-          <td id="name5" class="name">Lions</td>
-          <td id="score5">0</td>
-          <td id="game5_1"></td>
-          <td id="game5_2"></td>
-          <td id="game5_3"></td>
-          <td id="game5_4"></td>
-          <td id="game5_5"></td>
-          <td id="game5_6"></td>
-        </tr>
-        <tr class="sharks">
-          <td id="name6" class="name">Sharks</td>
-          <td id="score6">0</td>
-          <td id="game6_1"></td>
-          <td id="game6_2"></td>
-          <td id="game6_3"></td>
-          <td id="game6_4"></td>
-          <td id="game6_5"></td>
-          <td id="game6_6"></td>
-        </tr>
-        <tr class="dragons">
-          <td id="name7" class="name">Dragons</td>
-          <td id="score7">0</td>
-          <td id="game7_1"></td>
-          <td id="game7_2"></td>
-          <td id="game7_3"></td>
-          <td id="game7_4"></td>
-          <td id="game7_5"></td>
-          <td id="game7_6"></td>
-        </tr>
-        <tr class="titans">
-          <td id="name8" class="name">Titans</td>
-          <td id="score8">0</td>
-          <td id="game8_1"></td>
-          <td id="game8_2"></td>
-          <td id="game8_3"></td>
-          <td id="game8_4"></td>
-          <td id="game8_5"></td>
-          <td id="game8_6"></td>
-        </tr>
       </tbody>
     </table>
   </div>
@@ -169,7 +125,7 @@
 
           rows.forEach((row, i) => {
             const rawName = row.c[0]?.v || '';
-            const name = rawName.replace(/\s+/, '<br>');
+            const name = rawName.replace(/\s+/g, '<br>'); // break each word onto new line
             const score = row.c[1]?.v ?? '';
 
             const nameEl = document.getElementById(`name${i + 1}`);
